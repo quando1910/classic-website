@@ -1,0 +1,142 @@
+@mixin box-shadow($val1,$val2){
+  box-shadow: 0 $val1 $val2 rgba(34, 25, 25, 0.4);
+  -moz-box-shadow: 0 $val1 $val2 rgba(34,25,25,0.4);
+  -webkit-box-shadow: 0 $val1 $val2 rgba(34, 25, 25, 0.4);
+}
+
+@mixin s320 {
+  @media (max-width: 320px) {
+    @content;
+  }
+ }
+ @mixin s370 {
+  @media (min-width: 321px) and (max-width: 370px) {
+    @content;
+  }
+ }
+ @mixin s380 {
+  @media (min-width: 380px) {
+    @content;
+  }
+ }
+ @mixin s420 {
+  @media (min-width: 420px) {
+    @content;
+  }
+ }
+ @mixin s480 {
+  @media (min-width: 480px) {
+    @content;
+  }
+ }
+ @mixin s640 {
+  @media (min-width: 640px) {
+    @content;
+  }
+ }
+ @mixin sl640 {
+  @media (max-width: 639px) {
+    @content;
+  }
+ }
+ @mixin s568{
+  @media (min-width: 568px) {
+    @content;
+  }
+ }
+ @mixin s768 {
+  @media (min-width: 768px) {
+    @content;
+  }
+ }
+ @mixin sl768 {
+  @media (max-width: 767px) {
+    @content;
+  }
+ }
+ @mixin s767 {
+  @media (min-width: 767px) {
+    @content;
+  }
+ }
+ @mixin s768 {
+  @media (min-width: 768px) {
+    @content;
+  }
+ }
+ @mixin s960 {
+  @media (min-width: 960px) {
+    @content;
+  }
+ }
+ @mixin sl960 {
+  @media (max-width: 960px) {
+    @content;
+  }
+ }
+ @mixin s1024 {
+  @media (min-width: 1024px) {
+    @content;
+  }
+ }
+ @mixin s1190 {
+  @media (min-width: 1190px) {
+    @content;
+  }
+ }
+ //convert pxRem
+
+ @function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+ }
+
+ @function convertRootPxToEm($value) {
+  // check for null:
+  @if($value == null) {
+    @return $value;
+  }
+  // assume em:
+  @if (unitless($value) or unit($value) == em) {
+    @return 0em + $value;
+  }
+  @else {
+    @return 0em + strip-units($value)/13;
+  }
+ }
+ @function convertPxToRem($px) {
+ @return 0rem + strip-units($px)/13;
+ }
+
+ @mixin pxRem($property,$values) {
+  // Create a couple of empty lists as output buffers:
+  $px-values: ();
+  $rem-values: ();
+
+  // Ensure $values is a list.
+  @if type-of($values) != 'list' {
+    $values: join((), $values);
+  }
+
+  // Loop through the $values list:
+  @each $value in $values {
+    @if type-of($value) == number and (unitless($value) or unit($value) == px) {
+    $px-values: join($px-values, 0px + ($value));
+      $rem-values: join($rem-values, convertPxToRem($value));
+    }
+    @else {
+    // no conversion:
+    $px-values: join($px-values, $value);
+    $rem-values: join($rem-values, $value);
+    }
+  }
+
+  #{$property}: $px-values;
+
+  // don't add media query if it's not needed:
+  @if $px-values != $rem-values {
+    // @media only all {
+      #{$property}: $rem-values;
+    // }
+  }
+}
+ 

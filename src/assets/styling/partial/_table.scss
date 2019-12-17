@@ -1,0 +1,27 @@
+table {
+  font-size: 14px;
+  padding-top: 0.5rem;
+  th {
+    font-family: 'Gibson Regular';
+    width: 20%;
+    padding-bottom: 0.6rem;
+  }
+  th:first-child{
+    width: 65%;
+  }
+}
+.side-bar-pic {
+  @include s768 {
+    margin-right: -100px;
+  }
+}
+.view-pic {
+  @include s768 {
+    margin-left: -100px;
+  }
+}
+.view-container {
+  @include sl640 {
+    
+  }
+}

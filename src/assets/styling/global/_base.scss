@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+}
+.clearfix {
+  content: "";
+  clear: both;
+  display: table;
+}
+body {
+  color: grey;
+  margin: 0;
+}
+.d-flex {
+  @include s768 {
+    display: flex;
+  }
+  @include sl768 {
+    display: block;
+  }
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+p {
+  margin: 1px 0;
+}
+input, textarea {
+  font-size: 0.9rem;
+}
+button {
+  background: none;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.row:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+  color: #778899;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.to-the-right {
+  float: right;
+}
+
+.to-the-left {
+  float: left;
+}
+
+hr {
+  border: 0.5px solid rgba(0,0,0,0.2);
+}
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+button,input {
+  outline: 0
+}
+
+textarea {
+  border: 0;
+  resize: none;
+  outline: 0;
+}
+input {
+  border: 0;
+  width: 100%;
+}
+
+.center-item {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.masonry-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.viewer {
+  @include sl960 {
+    height: 40vh;
+  }
+  @include s960 {
+    height: 100vh;
+  }
+}
+.money{
+  font-family: 'Pony';
+  font-weight: lighter;
+  font-size: 25px;
+  padding-left: 30px;
+}
+.prepost {
+  height: 432px;
+  %extend-thumb {
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  .thumb-prepost {
+    @extend %extend-thumb;
+    @include sl768 {
+      height: 200px !important;
+    }
+    @include s768 {
+      height: 432px !important;
+    }  
+  }
+  .thumb-prepost-small {
+    @extend %extend-thumb;
+    height: 100px !important;
+  }
+
+  .cp-post-base {
+    @include sl768 {
+    margin-top: -20px;
+    .cp-post-meta {
+      display: none;
+    }
+    }
+    @include s768 {
+      position: absolute !important;
+      top: 50%;
+      left: 0;
+      padding: 0 25px;
+    }
+  }
+  .cp-post-content {
+    padding: 25px;
+    @include s768 {
+      height: 251px;
+    }
+  }
+  .prepost {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .read-paper {
+    @include sl768 {
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+  }
+}
+.gift-row {
+  margin-right: -30px;
+  margin-left: 30px;
+  padding-bottom: 10px;
+  @include sl768 {
+    margin-left: 0;
+  }
+} 
